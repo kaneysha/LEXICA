@@ -1,9 +1,11 @@
 <?php
 // You can add session management here
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 session_start();
 
 // Example database connection (uncomment and modify as needed)
-/*
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,19 +15,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-*/
+
 
 // Example of getting article data (modify according to your database structure)
-/*
+
 $article_id = isset($_GET['id']) ? $_GET['id'] : 1;
-$sql = "SELECT * FROM articles WHERE id = $article_id";
+$sql = "SELECT * FROM artikel WHERE id = $article_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $article = $result->fetch_assoc();
-    $title = $article['title'];
+    $title = $article['judul'];
     $author = $article['author'];
-    $image = $article['image'];
+    $image = $article['gambar'];
     // Get content for each literacy level
     $lanjutan_content = $article['lanjutan_content'];
     $menengah_content = $article['menengah_content'];
@@ -39,15 +41,15 @@ if ($result->num_rows > 0) {
     $menengah_content = "<strong>MENENGAH:</strong> Dalam tahapan menengah, remaja mulai menunjukkan pemahaman lebih baik terhadap PHBS... [isi menengah]";
     $pemula_content = "<strong>PEMULA:</strong> Pengenalan awal pentingnya kebersihan pribadi dan lingkungan mulai dikenalkan melalui kegiatan sederhana... [isi pemula]";
 }
-*/
+
 
 // For now, using hardcoded values
-$title = "PENGARUH PENDIDIKAN KESEHATAN TERHADAP PERILAKU HIDUP BERSIH DAN SEHAT PADA REMAJA";
-$author = "Kontan -- Ringgana Wandy Wiguna";
-$image = "anak-sampah.png";
-$lanjutan_content = "<strong>ABSTRAK:</strong> Penelitian ini bertujuan untuk mengevaluasi pengaruh pendidikan kesehatan terhadap perilaku hidup bersih dan sehat (PHBS) pada remaja... [isi lanjutan]";
-$menengah_content = "<strong>MENENGAH:</strong> Dalam tahapan menengah, remaja mulai menunjukkan pemahaman lebih baik terhadap PHBS... [isi menengah]";
-$pemula_content = "<strong>PEMULA:</strong> Pengenalan awal pentingnya kebersihan pribadi dan lingkungan mulai dikenalkan melalui kegiatan sederhana... [isi pemula]";
+// $title = "PENGARUH PENDIDIKAN KESEHATAN TERHADAP PERILAKU HIDUP BERSIH DAN SEHAT PADA REMAJA";
+// $author = "Kontan -- Ringgana Wandy Wiguna";
+// $image = "anak-sampah.png";
+// $lanjutan_content = "<strong>ABSTRAK:</strong> Penelitian ini bertujuan untuk mengevaluasi pengaruh pendidikan kesehatan terhadap perilaku hidup bersih dan sehat (PHBS) pada remaja... [isi lanjutan]";
+// $menengah_content = "<strong>MENENGAH:</strong> Dalam tahapan menengah, remaja mulai menunjukkan pemahaman lebih baik terhadap PHBS... [isi menengah]";
+// $pemula_content = "<strong>PEMULA:</strong> Pengenalan awal pentingnya kebersihan pribadi dan lingkungan mulai dikenalkan melalui kegiatan sederhana... [isi pemula]";
 
 // Get the active tab (default to lanjutan if not specified)
 $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'lanjutan';
@@ -67,7 +69,7 @@ $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'lanjutan';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
       body {
         font-family: 'Inter', sans-serif;
       }
@@ -188,7 +190,8 @@ $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'lanjutan';
       .menu-item:hover {
         background-color: #f3f4f6;
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="artikel-detail.css">
   </head>
 
   <body class="bg-[#E9EBEC] min-h-screen flex flex-col relative">
